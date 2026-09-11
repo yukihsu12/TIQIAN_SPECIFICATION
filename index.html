@@ -354,7 +354,7 @@ th{font-weight:600;background:#f5f6f3}
     <div class="quick-nav" aria-label="功能章節快速導覽">
       <a href="#front">前台預約</a>
       <a href="#member">會員中心</a>
-      <a href="#line">LINE LIFF</a>
+      <a href="#line">LINE 預約</a>
       <a href="#payment">多分店金流</a>
       <a href="#admin">後台管理</a>
       <a href="#line">LINE 通知</a>
@@ -408,8 +408,8 @@ th{font-weight:600;background:#f5f6f3}
       <p>提供租客瀏覽分店與房間、查看可預約時段、登入會員、建立預約、付款及查詢個人訂單。</p>
     </div>
     <div class="block">
-      <h3>LINE 官方帳號／LIFF</h3>
-      <p>會員可從 Rich Menu 進入 LIFF 預約頁，在 LINE 內完成預約；LINE 帳號需與會員帳號綁定。</p>
+      <h3>LINE 官方帳號</h3>
+      <p>會員可從 Rich Menu 開啟同一套響應式預約網站；LINE 帳號可另外與會員帳號綁定，以接收個人化通知。</p>
     </div>
     <div class="block">
       <h3>會員中心</h3>
@@ -442,7 +442,7 @@ th{font-weight:600;background:#f5f6f3}
   <h3>預約入口</h3>
   <ul>
     <li>瀏覽器：手機、平板與電腦皆可使用。</li>
-    <li>LINE 官方帳號：從 Rich Menu 點選「預約」，以 LIFF 開啟同一套預約流程。</li>
+    <li>LINE 官方帳號：從 Rich Menu 點選「預約」，開啟與一般瀏覽器相同的響應式預約網站。</li>
     <li>使用者可先瀏覽分店、房間與空檔；確認預約前須完成會員登入或註冊。</li>
   </ul>
 </section>
@@ -532,10 +532,10 @@ th{font-weight:600;background:#f5f6f3}
 
   <h3>功能範圍</h3>
   <ul>
-    <li>LINE Login 與會員帳號綁定。</li>
-    <li>Rich Menu「預約」入口。</li>
-    <li>LIFF 內完成預約流程。</li>
-    <li>預約／付款相關通知。</li>
+    <li>LINE Login 或官方帳號帳號連結，供一般帳號與 Google 登入會員綁定 LINE 身分。</li>
+    <li>Rich Menu「預約」入口，直接開啟同一套響應式預約網站。</li>
+    <li>預約流程、會員中心與付款皆由同一套網站統一提供，不需額外建立 LINE 內嵌應用程式。</li>
+    <li>預約／付款相關通知，僅發送給已完成 LINE 綁定且符合 LINE 發送條件的會員。</li>
     <li>使用空間前 30 分鐘自動提醒。</li>
     <li>保留到店資訊與門鎖資訊查詢功能；實際門鎖串接依設備能力確認。</li>
   </ul>
@@ -669,7 +669,7 @@ th{font-weight:600;background:#f5f6f3}
     <div class="flow-sequence">
       <div class="flow-node">
         <strong>進入預約</strong>
-        <small>瀏覽器／LINE LIFF</small>
+        <small>瀏覽器／LINE 預約連結</small>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-node">
@@ -765,7 +765,7 @@ th{font-weight:600;background:#f5f6f3}
 <section id="acceptance">
   <h2>第一版驗收重點</h2>
   <ul>
-    <li>網頁及 LINE LIFF 均可完成選店、選房、選時段與建立預約。</li>
+    <li>網頁與 LINE 官方帳號的預約連結皆開啟同一套流程，可完成選店、選房、選時段與建立預約。</li>
     <li>未登入會員不可完成預約。</li>
     <li>同一房間的重疊時段不可重複成立。</li>
     <li>一般會員可立即付款或後付款；後付款 24 小時逾期後自動取消並釋放時段。</li>
@@ -792,7 +792,7 @@ th{font-weight:600;background:#f5f6f3}
       <tr><td>取消／退款規則</td><td class="status tbd">待確認</td><td>取消期限、退款比例、手續費與管理員可調整範圍。</td></tr>
       <tr><td>門鎖串接</td><td class="status tbd">待確認</td><td>門鎖品牌、型號、API、密碼產生／撤銷能力。</td></tr>
       <tr><td>月租／開通會員限制</td><td class="status tbd">待確認</td><td>是否有每日／同時預約上限、可用時段、跨店規則。</td></tr>
-      <tr><td>預約成功 LINE 訊息</td><td class="status tbd">待確認</td><td>依實際 LIFF／付款流程確認可否穩定使用 Reply；若為後端延遲事件則改用 Push。</td></tr>
+      <tr><td>預約成功 LINE 訊息</td><td class="status tbd">待確認</td><td>依實際網站入口、帳號綁定與付款流程確認可否穩定使用 Reply；若為後端延遲事件則改用 Push。</td></tr>
     </tbody>
   </table>
 </section>
