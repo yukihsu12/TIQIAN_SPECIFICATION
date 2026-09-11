@@ -290,6 +290,8 @@ th{font-weight:600;background:#f5f6f3}
   .branch-flow-clean{grid-template-columns:1fr;gap:8px}
   .branch-arrow{transform:rotate(90deg)}
   .branch-option{border:1px solid var(--line);border-radius:6px}
+  .permission-table{display:block;overflow-x:auto}
+  .permission-table th,.permission-table td{min-width:160px}
 }
 @media print{
   header,nav,.quick-nav{display:none}
@@ -618,7 +620,25 @@ th{font-weight:600;background:#f5f6f3}
   </ul>
 
   <h3>管理員權限</h3>
-  <p>沿用三級權限：總管理員、分店管理員、分店檢視者；不同角色只能查看與操作被授權的分店資料。</p>
+  <p>採三級權限：總管理員、分店管理員、分店檢視者。除總管理員外，角色均須先被指派可存取的分店；未授權的分店資料不可查詢、檢視或操作。</p>
+
+  <table class="permission-table">
+    <thead><tr><th>權限項目</th><th>總管理員</th><th>分店管理員</th><th>分店檢視者</th></tr></thead>
+    <tbody>
+      <tr><td><strong>可查看的分店範圍</strong></td><td>所有分店與跨店彙總資料。</td><td>僅限被授權分店。</td><td>僅限被授權分店，且為唯讀。</td></tr>
+      <tr><td><strong>預約日曆與時段</strong></td><td>查看、建立、修改、取消所有分店預約。</td><td>查看、建立、修改、取消授權分店預約；每次異動均需留下紀錄。</td><td>查看授權分店的房間、時段、預約狀態與基本會員資訊；不可新增或修改。</td></tr>
+      <tr><td><strong>會員資料與會員方案</strong></td><td>查看、修改會員資料、會員類型與跨店／房間權限。</td><td>查看曾在授權分店預約的會員；可補充服務備註，不可調整會員類型、月租權限或跨店資料。</td><td>查看授權分店預約所需的會員姓名、聯絡方式與預約紀錄；敏感欄位依需要遮罩。</td></tr>
+      <tr><td><strong>訂單、付款與退款</strong></td><td>查看所有訂單、付款結果、退款狀態；可執行退款與人工調整。</td><td>查看授權分店訂單與付款狀態；可標記現場收款／異常，退款需送交總管理員處理。</td><td>查看授權分店訂單與付款狀態；不可修改、退款或匯出。</td></tr>
+      <tr><td><strong>分店、房間與價格</strong></td><td>新增、停用與修改分店、房間、營業規則、價格與加購項目。</td><td>可調整授權分店的房間停用時段與營運備註；不可新增／刪除分店、變更全域規則或價格。</td><td>查看授權分店的房間、設備、價格與營業規則；不可修改。</td></tr>
+      <tr><td><strong>營運統計與資料匯出</strong></td><td>查看跨店營收、使用率、會員統計並可匯出。</td><td>查看授權分店營收、使用率與會員使用統計；匯出權限可由總管理員另行開啟。</td><td>查看授權分店的彙總統計；不可查看跨店資料或匯出含個資的明細。</td></tr>
+      <tr><td><strong>管理員與系統設定</strong></td><td>管理管理員帳號、角色、分店授權、金流帳號、LINE／行事曆與其他系統設定。</td><td>不可管理其他管理員、金流帳號或系統串接。</td><td>不可管理其他管理員、金流帳號或系統串接。</td></tr>
+      <tr><td><strong>操作／稽核紀錄</strong></td><td>查看所有操作與異動紀錄。</td><td>查看授權分店的預約、訂單與房間異動紀錄。</td><td>不可查看完整稽核紀錄。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>控管原則：</strong>後台權限採「預設拒絕」；前端選單隱藏不等於權限控管，API 與資料查詢均須再次驗證角色及分店範圍。取消、退款、價格、會員方案與權限異動應記錄操作者、異動前後值與時間。
+  </div>
 </section>
 
 <section id="rules">
@@ -753,6 +773,7 @@ th{font-weight:600;background:#f5f6f3}
     <li>不同分店可使用不同金流帳號。</li>
     <li>後台可修改預約日期、時間與房間，且修改後仍會檢查衝突。</li>
     <li>後台可新增、修改、停用分店與房間。</li>
+    <li>三級管理員僅能依角色與被授權分店查看及操作資料；未授權分店與敏感操作不可透過前台或 API 存取。</li>
     <li>會員可查詢未來預約、歷史預約與付款狀態。</li>
     <li>已綁定 LINE 的會員可依規則收到通知；30 分鐘前提醒可正常排程。</li>
     <li>預約可加入／同步至個人行事曆；改期與取消行為符合選定同步方式。</li>
